@@ -1,0 +1,252 @@
+/* Aplicar box-sizing a todos los elementos para mantener la simetría */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+
+/* Variables CSS para colores y estilos */
+
+ :root {
+    --primary-color: #007BFF;
+    --primary-hover: #0056b3;
+    --secondary-color: #6c757d;
+    --secondary-hover: #5a6268;
+    --success-color: #28a745;
+    --success-hover: #218838;
+    --danger-color: #dc3545;
+    --danger-hover: #c82333;
+    --background-color: #f0f2f5;
+    --container-bg: white;
+    --box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Reset básico */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--background-color);
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+    background: var(--container-bg);
+    padding: 20px;
+    box-shadow: var(--box-shadow);
+    border-radius: 8px;
+}
+
+
+/* Encabezado */
+
+header h1 {
+    text-align: center;
+}
+
+
+/* Barra de herramientas y filas */
+
+.toolbar {
+    margin-bottom: 15px;
+}
+
+.toolbar-row {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    margin-bottom: 5px;
+}
+
+
+/* Botones para el grupo de proposiciones: color azul */
+
+.toolbar-row.proposition-row .symbol-button {
+    padding: 10px 15px;
+    font-size: 20px;
+    border: 1px solid #ccc;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.toolbar-row.proposition-row .symbol-button:hover {
+    background-color: var(--primary-hover);
+}
+
+
+/* Botones para el grupo de conectores: color gris oscuro */
+
+.toolbar-row.logic-row .symbol-button {
+    padding: 10px 15px;
+    font-size: 20px;
+    border: 1px solid #ccc;
+    background-color: var(--secondary-color);
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.toolbar-row.logic-row .symbol-button:hover {
+    background-color: var(--secondary-hover);
+}
+
+
+/* Grupo de entrada */
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+
+/* Botones Resolver, Limpiar y Guardar como PDF */
+
+.button-group {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#solveButton {
+    padding: 12px 25px;
+    margin: 0 5px;
+    background-color: var(--success-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+#solveButton:hover {
+    background-color: var(--success-hover);
+}
+
+#clearButton {
+    padding: 12px 25px;
+    margin: 0 5px;
+    background-color: var(--danger-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+#clearButton:hover {
+    background-color: var(--danger-hover);
+}
+
+
+/* Resultados y animaciones */
+
+.result {
+    margin-top: 20px;
+}
+
+
+/* Animación para hacer un fade in con desplazamiento */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* Estilos para cada paso (rama) */
+
+.step {
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    opacity: 0;
+    /* Inicia invisible y se mostrará con la animación */
+    animation: fadeInUp 0.5s forwards;
+}
+
+.step:hover {
+    background-color: #f0f8ff;
+    transition: background-color 0.3s;
+}
+
+
+/* Colores para ramas cerradas y abiertas */
+
+.closed {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+.open {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+
+/* Nueva clase para resaltar variables en contradicción */
+
+.highlight {
+    background-color: yellow;
+    font-weight: bold;
+}
+
+
+/* Footer */
+
+footer {
+    margin-top: 20px;
+    padding-top: 10px;
+    border-top: 1px solid #ccc;
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+}
+
+footer p {
+    margin: 0;
+    display: inline-flex;
+    align-items: center;
+}
+
+footer img {
+    vertical-align: middle;
+    margin-left: 5px;
+}
+
+
+/* Media queries para responsividad */
+
+@media (max-width: 600px) {
+    .toolbar-row {
+        flex-wrap: wrap;
+    }
+    input[type="text"] {
+        font-size: 14px;
+    }
+}
